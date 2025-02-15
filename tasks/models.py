@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class Task(models.Model):
@@ -13,12 +14,12 @@ class Task(models.Model):
                         3: 'High',
                         4: 'Urgent'}
 
-    name = models.Charfield()
-    status = models.Charfield(choices=STATUS_CHOICES)
+    name = models.CharField(max_length=1000)
+    status = models.CharField(max_length=1000,choices=STATUS_CHOICES)
     priority = models.IntegerField(choices=PRIORITY_CHOICES)
     description = models.TextField()
     archived = models.BooleanField(default=False)
-    assigned_to = models.Charfield()
+    assigned_to = models.CharField(max_length=1000)
     create_date = models.DateTimeField(default=datetime.now)
     update_date = models.DateTimeField(default=datetime.now)
     deadline_date = models.DateField()
